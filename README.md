@@ -17,3 +17,7 @@ PurpleAir Sensor is a low cost sensor that can be deployed easily for less than 
 2 - There is a relationship between PM2.5 and time <br>
 3 - There is a relationship between PM2.5 and Weather (Temp, Humidity and Wind Speed) <br>
 4- CO, NOx and Ozone concentrations are related to the time of the day. <br>
+
+
+### Scalability
+The research conducted by our team has been restricted to one particular location and only for a small time period of three months. Despite this, the conclusions drawn from our research are informative and useful in indicating the behaviour of particulate matter with various factors. There is huge scope for expanding this reasearch, larger amounts of data can be procured and studied in the same manner. Different locations on Earth can be explored and the air quality can be predicted based on temperature, humidity and wind speed. This study is a starting point in controlling and preventing an increase in air pollution.
