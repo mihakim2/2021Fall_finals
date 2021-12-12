@@ -1,4 +1,4 @@
-# import aqi
+import aqi
 import pandas as pd
 import numpy as np
 from purpleair.network import SensorList
@@ -9,39 +9,39 @@ from purpleair.sensor import Sensor
 from numba import jit
 
 
-# def val_to_aqi(pollutant,input_col):
-#     import aqi
-#     # Supported  by AQI library
-#     #pm10 (µg/m³), o3_8h (ppm), co_8h (ppm), no2_1h (ppb), o3_1h (ppm), so2_1h (ppb), pm25 (µg/m³)
-#     temp=[]
-#     for i in input_col.tolist():
-#         if i >=0:
-#             cal_aqi = int(aqi.to_aqi([(getattr(aqi, pollutant), i)]))
-#             temp.append(cal_aqi)
-#         else:
-#             call_aqi=0
-#             temp.append(cal_aqi)
-#     return temp
-#
-#
-# def combined_aqi(readings):
-#     vals= readings[1:5]
-#     if all(i >= 0 for i in vals):
-#         myaqi = aqi.to_aqi([
-#         (aqi.POLLUTANT_CO_8H, readings[1]),
-#         (aqi.POLLUTANT_NO2_1H, readings[2]),
-#         (aqi.POLLUTANT_O3_8H, readings[3]),
-#         (aqi.POLLUTANT_PM10, readings[4]),
-#         (aqi.POLLUTANT_PM25, readings[5])
-#          ])
-#     else:
-#         myaqi = aqi.to_aqi([
-#         (aqi.POLLUTANT_CO_8H, readings[1]),
-#         (aqi.POLLUTANT_O3_8H, readings[3]),
-#         (aqi.POLLUTANT_PM10, readings[4]),
-#         (aqi.POLLUTANT_PM25, readings[5])
-#          ])
-#     return int(myaqi)
+def val_to_aqi(pollutant,input_col):
+    import aqi
+    # Supported  by AQI library
+    #pm10 (µg/m³), o3_8h (ppm), co_8h (ppm), no2_1h (ppb), o3_1h (ppm), so2_1h (ppb), pm25 (µg/m³)
+    temp=[]
+    for i in input_col.tolist():
+        if i >=0:
+            cal_aqi = int(aqi.to_aqi([(getattr(aqi, pollutant), i)]))
+            temp.append(cal_aqi)
+        else:
+            call_aqi=0
+            temp.append(cal_aqi)
+    return temp
+
+
+def combined_aqi(readings):
+    vals= readings[1:5]
+    if all(i >= 0 for i in vals):
+        myaqi = aqi.to_aqi([
+        (aqi.POLLUTANT_CO_8H, readings[1]),
+        (aqi.POLLUTANT_NO2_1H, readings[2]),
+        (aqi.POLLUTANT_O3_8H, readings[3]),
+        (aqi.POLLUTANT_PM10, readings[4]),
+        (aqi.POLLUTANT_PM25, readings[5])
+         ])
+    else:
+        myaqi = aqi.to_aqi([
+        (aqi.POLLUTANT_CO_8H, readings[1]),
+        (aqi.POLLUTANT_O3_8H, readings[3]),
+        (aqi.POLLUTANT_PM10, readings[4]),
+        (aqi.POLLUTANT_PM25, readings[5])
+         ])
+    return int(myaqi)
 
 
 @jit(nopython=True)
